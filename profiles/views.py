@@ -1,9 +1,8 @@
-from rest_framework.views import APIView
-from rest_framework.response import Response
+from rest_framework import generics
 from .models import Profile
+from .serializers import ProfileSerializer
 
 
-class ProfileList(APIView):
-    def get(self, request):
-        profiles = Profile.objects.all()
-        return Response(profiles)
+class ProfileList(generics.ListAPIView):
+    serializer_class = ProfileSerializer
+    queryset = Profile.objects.all()
