@@ -5,6 +5,7 @@ from skt_drf_api.permissions import IsOwnerOrReadOnly
 from django.db.models import Count
 from django_filters.rest_framework import DjangoFilterBackend
 
+
 class PostList(generics.ListCreateAPIView):
     permissions_classes = [permissions.IsAuthenticatedOrReadOnly]
     serializer_class = PostSerializer
