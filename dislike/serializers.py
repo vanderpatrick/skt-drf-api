@@ -3,7 +3,7 @@ from django.db import IntegrityError
 from .models import Dislike
 
 
-class LikeSerializer(serializers.ModelSerializer):
+class DislikeSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source="owner.usernmae")
 
     class Meta:
