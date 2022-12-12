@@ -22,9 +22,10 @@ class PostList(generics.ListCreateAPIView):
     filterset_fields = [
         'owner__followed__owner__profile',
         'likes__owner__profile',
+        'dislike__owner__profile',
         'owner__profile',
         'Post_location'
-        
+    
     ]
     search_fields = [
         'owner__username',
