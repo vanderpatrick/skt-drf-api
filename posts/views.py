@@ -25,13 +25,11 @@ class PostList(generics.ListCreateAPIView):
         'dislike__owner__profile',
         'owner__profile',
         'Post_location'
-    
     ]
     search_fields = [
         'owner__username',
-        'dislike__owner__profile',
         'title',
-        'Post_location'
+        'Post_location',
     ]
     ordering_fields = [
         'comments_count',
