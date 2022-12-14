@@ -30,7 +30,13 @@ class VideoList(generics.ListCreateAPIView):
        'video_comments',
        'videoslike__created_at'
        'videodislike__created_at'
-
+    ]
+    filterset_fields = [
+        'owner__followed__owner__profile',
+        'videoslike__owner__profile',
+        'videodislike__owner__profile',
+        'owner__profile',
+        'post_location'
     ]
 
     def perform_create(self, serializer):
