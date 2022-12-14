@@ -14,8 +14,23 @@ class VideoList(generics.ListCreateAPIView):
         video_likes=Count('videoslike', distinct=True),
         video_dislike=Count('videodislike', distinct=True)
     ).order_by('-created_at')
+    filter_backends = [
+        filters.OrderingFilter,
+        filters.SearchFilter,
+        DjangoFilterBackend
+    ]
     search_fields = [
+        'owner__username',
+        'title',
         'post_location'
+    ]
+    ordering_fields = [
+       'video_likes',
+       'video_dislike'
+       'video_comments',
+       'videoslike__created_at'
+       'videodislike__created_at'
+
     ]
 
     def perform_create(self, serializer):
