@@ -114,6 +114,9 @@ INSTALLED_APPS = [
     'videos',
     'likes',
     'comments',
+    'videolike',
+    'videodislike',
+    'videocomments'
 ]
 SITE_ID = 1
 MIDDLEWARE = [
