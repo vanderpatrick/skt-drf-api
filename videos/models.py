@@ -22,12 +22,12 @@ class Videos(models.Model):
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    video = models.ImageField(
+    video = models.FileField(
         upload_to='videos/',
-        blank=True,
         storage=VideoMediaCloudinaryStorage(),
-        validators=[validate_video])
-    Post_location = models.CharField(
+        validators=[validate_video]
+    )
+    post_location = models.CharField(
         max_length=32, choices=Post_location, default="other"
     )
 

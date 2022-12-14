@@ -1,10 +1,10 @@
-from rest_frameWork import serializers
+from rest_framework import serializers
 from videos.models import Videos
 
 
 class VideoSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
-    is_owner = serializer.SerializerMethodField()
+    is_owner = serializers.SerializerMethodField()
     profile_id = serializers.ReadOnlyField(source='owner.profile.id')
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
 
@@ -15,7 +15,8 @@ class VideoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Videos
         fields = [
-            'íd',
+            'video',
+            'id',
             'owner',
             'is_owner',
             'profile_id',
