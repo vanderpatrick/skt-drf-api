@@ -9,7 +9,9 @@ from django_filters.rest_framework import DjangoFilterBackend
 class VideoList(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     serializer_class = VideoSerializer
-    queryset = Videos.objects.all().order_by('-created_at')
+    queryset = Videos.objects.annotate(
+        video_comment=Count('videocomments', distinct=True)
+    ).order_by('-created_at')
     search_fields = [
         'post_location'
     ]
