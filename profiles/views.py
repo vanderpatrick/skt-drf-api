@@ -10,6 +10,7 @@ class ProfileList(generics.ListAPIView):
     serializer_class = ProfileSerializer
     queryset = Profile.objects.annotate(
         posts_count=Count('owner__post', distinct=True),
+        videos_count=Count('owner__videos', distinct=True),
         followers_count=Count('owner__followed', distinct=True),
         following_count=Count('owner__following', distinct=True)
     ).order_by('-created_at')
