@@ -1,3 +1,19 @@
-from django.shortcuts import render
+from rest_framework import generics, permissions
+from skt_drf_api.permissions import IsOwnerOrReadOnly
+from .models import VideoLike
+from .serializers import VideoLikeSerializer
 
-# Create your views here.
+
+class VideoLikeList(generics.ListCreateAPIView):
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    serializer_class = VideoLikeSerializer
+    queryset = VideoLike.objects.all()
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
+
+
+class VideoLikeDetail(generics.RetrieveDestroyAPIView):
+    permission_classes = [IsOwnerOrReadOnly]
+    queryset = VideoLike.objects.all()
+    serializer_class = VideoLikeSerializer
