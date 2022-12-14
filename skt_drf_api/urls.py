@@ -31,6 +31,7 @@ urlpatterns = [
     path('', include('videos.urls')),
     path('', include('likes.urls')),
     path('', include('videolike.urls')),
+    path('', include('videodislike.urls')),
     path('', include('followers.urls')),
     path('', include('comments.urls')),
     path('', include('videocomments.urls')),

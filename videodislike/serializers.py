@@ -4,7 +4,7 @@ from .models import VideoDislike
 
 
 class VideoDislikeSerializer(serializers.ModelSerializer):
-    owner = serializers.ReadOnlyField(sourece='owner.username')
+    owner = serializers.ReadOnlyField(source='owner.username')
 
     class Meta:
         model = VideoDislike

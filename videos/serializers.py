@@ -9,6 +9,7 @@ class VideoSerializer(serializers.ModelSerializer):
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
     video_comments = serializers.ReadOnlyField()
     video_likes = serializers.ReadOnlyField()
+    video_dislike = serializers.ReadOnlyField()
 
     def get_is_owner(self, obj):
         request = self.context['request']
@@ -28,5 +29,6 @@ class VideoSerializer(serializers.ModelSerializer):
             'updated_at',
             'post_location',
             'video_comments',
-            'video_likes'
+            'video_likes',
+            'video_dislike'
         ]
