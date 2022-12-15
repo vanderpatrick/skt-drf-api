@@ -10,6 +10,7 @@ class VideoList(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     serializer_class = VideoSerializer
     queryset = Videos.objects.annotate(
+        video_favorite_count=Count('favorites_videos', distinct=True),
         video_comments=Count('videocomments', distinct=True),
         video_likes=Count('videoslike', distinct=True),
         video_dislike=Count('videodislike', distinct=True)
@@ -27,6 +28,7 @@ class VideoList(generics.ListCreateAPIView):
     ordering_fields = [
        'video_likes',
        'video_dislike',
+       'favorites_videos__owner__profile',
        'video_comments',
        'videoslike__created_at'
        'videodislike__created_at'

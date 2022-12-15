@@ -117,6 +117,7 @@ INSTALLED_APPS = [
     'videolike',
     'videodislike',
     'favorites',
+    'videofavorites',
     'videocomments'
 ]
 SITE_ID = 1
