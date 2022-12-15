@@ -36,4 +36,5 @@ urlpatterns = [
     path('', include('comments.urls')),
     path('', include('videocomments.urls')),
     path('', include('dislike.urls')),
+    path('', include('favorites.urls')),
 ]

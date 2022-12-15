@@ -10,6 +10,7 @@ class PostList(generics.ListCreateAPIView):
     permissions_classes = [permissions.IsAuthenticatedOrReadOnly]
     serializer_class = PostSerializer
     queryset = Post.objects.annotate(
+        post_favorite_count=Count('favorites', distinct=True),
         comments_count=Count('comments', distinct=True),
         like_count=Count('likes', distinct=True),
         dislike_count=Count('dislike', distinct=True)
@@ -21,6 +22,7 @@ class PostList(generics.ListCreateAPIView):
     ]
     filterset_fields = [
         'owner__followed__owner__profile',
+        'favorites__owner__profile',
         'likes__owner__profile',
         'dislike__owner__profile',
         'owner__profile',
@@ -48,6 +50,7 @@ class PostDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = PostSerializer
     queryset = queryset = Post.objects.annotate(
         comments_count=Count('comments', distinct=True),
+        post_favorite_count=Count('favorites', distinct=True),
         like_count=Count('likes', distinct=True),
         dislike_count=Count('dislike', distinct=True)
     ).order_by("-created_at")
