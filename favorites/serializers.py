@@ -12,7 +12,7 @@ class PostFavoritesSerializer(serializers.ModelSerializer):
             'id',
             'created_at',
             'owner',
-            'post'
+            'post_favorite'
         ]
 
     def create(self, validated_data):
