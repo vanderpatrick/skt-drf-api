@@ -28,13 +28,13 @@ class VideoList(generics.ListCreateAPIView):
     ordering_fields = [
        'video_likes',
        'video_dislike',
-       'favorites_videos__owner__profile',
        'video_comments',
        'videoslike__created_at'
        'videodislike__created_at'
     ]
     filterset_fields = [
         'owner__followed__owner__profile',
+        'favorites_videos__owner__profile',
         'videoslike__owner__profile',
         'videodislike__owner__profile',
         'owner__profile',
