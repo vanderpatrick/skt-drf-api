@@ -6,8 +6,11 @@ from .serializers import VideoCommentSerializer, VideoCommentSerializerDetail
 
 
 class VideoCommentList(generics.ListCreateAPIView):
+    """
+    List of all generated comments in video posts
+    """
     serializer_class = VideoCommentSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly] 
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = VideoComment.objects.all()
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['video']
@@ -17,6 +20,9 @@ class VideoCommentList(generics.ListCreateAPIView):
 
 
 class VideoCommentDetail(generics.RetrieveUpdateDestroyAPIView):
+    """
+    Detailed list of all video comments
+    """
     permission_classes = [IsOwnerOrReadOnly]
     serializer_class = VideoCommentSerializerDetail
     queryset = VideoComment.objects.all()

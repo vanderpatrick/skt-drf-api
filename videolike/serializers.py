@@ -4,6 +4,9 @@ from .models import VideoLike
 
 
 class VideoLikeSerializer(serializers.ModelSerializer):
+    """
+    Video like serializer
+    """
     owner = serializers.ReadOnlyField(source='owner.username')
 
     class Meta:

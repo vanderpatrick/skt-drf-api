@@ -4,6 +4,9 @@ from videofavorites.models import Videofavorites
 
 
 class videofavoritesSerializers(serializers.ModelSerializer):
+    """
+    Post video favorites serializzer
+    """
     owner = serializers.ReadOnlyField(source='owner.username')
 
     class Meta:

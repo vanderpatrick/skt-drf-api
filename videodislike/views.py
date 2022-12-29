@@ -5,6 +5,9 @@ from .serializers import VideoDislikeSerializer
 
 
 class VideoDislikeList(generics.ListCreateAPIView):
+    """
+    List of all  disliked video posts 
+    """
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     serializer_class = VideoDislikeSerializer
     queryset = VideoDislike.objects.all()
@@ -14,6 +17,9 @@ class VideoDislikeList(generics.ListCreateAPIView):
 
 
 class VideoDislikeDetail(generics.RetrieveDestroyAPIView):
+    """
+    Detailed list of video posts dislikes
+    """
     permission_classes = [IsOwnerOrReadOnly]
     queryset = VideoDislike.objects.all()
     serializer_class = VideoDislikeSerializer

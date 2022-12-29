@@ -17,6 +17,9 @@ Post_location = [
 
 
 class Videos(models.Model):
+    """
+    Videos models
+    """
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
     content = models.TextField()

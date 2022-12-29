@@ -34,4 +34,7 @@ class VideoCommentSerializer(serializers.ModelSerializer):
 
 
 class VideoCommentSerializerDetail(VideoCommentSerializer):
+    """
+    Detailed serializer for video comments
+    """
     video = serializers.ReadOnlyField(source='video.id')

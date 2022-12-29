@@ -5,6 +5,9 @@ from videofavorites.serializers import videofavoritesSerializers
 
 
 class VideofavoritesList(generics.ListCreateAPIView):
+    """
+    Display list of all favorited video posts
+    """
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     serializer_class = videofavoritesSerializers
     queryset = Videofavorites.objects.all()
@@ -14,6 +17,9 @@ class VideofavoritesList(generics.ListCreateAPIView):
 
 
 class VideofavoritesDetail(generics.RetrieveDestroyAPIView):
+    """
+    Detailed list of favorited video posts
+    """
     permission_classes = [IsOwnerOrReadOnly]
     serializer_class = videofavoritesSerializers
     queryset = Videofavorites.objects.all()

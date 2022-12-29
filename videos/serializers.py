@@ -6,6 +6,9 @@ from videofavorites.models import Videofavorites
 
 
 class VideoSerializer(serializers.ModelSerializer):
+    """
+    Video serializers
+    """
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
     profile_id = serializers.ReadOnlyField(source='owner.profile.id')

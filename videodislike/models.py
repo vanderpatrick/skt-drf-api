@@ -4,6 +4,9 @@ from videos.models import Videos
 
 
 class VideoDislike(models.Model):
+    """
+    Video post Dislike model
+    """
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     video = models.ForeignKey(
         Videos, on_delete=models.CASCADE, related_name='videodislike')

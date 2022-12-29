@@ -4,6 +4,9 @@ from .models import VideoDislike
 
 
 class VideoDislikeSerializer(serializers.ModelSerializer):
+    """
+    Video dislike serializers
+    """
     owner = serializers.ReadOnlyField(source='owner.username')
 
     class Meta:
@@ -11,7 +14,7 @@ class VideoDislikeSerializer(serializers.ModelSerializer):
         fields = [
             'owner', 'video', 'created_at', 'id'
         ]
-    
+
     def create(self, validated_data):
         try:
             return super().create(validated_data)

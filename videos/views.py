@@ -7,6 +7,9 @@ from django_filters.rest_framework import DjangoFilterBackend
 
 
 class VideoList(generics.ListCreateAPIView):
+    """
+    Displays list of all posted videos
+    """
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     serializer_class = VideoSerializer
     queryset = Videos.objects.annotate(
@@ -46,6 +49,9 @@ class VideoList(generics.ListCreateAPIView):
 
 
 class VideoDetail(generics.RetrieveUpdateDestroyAPIView):
+    """
+    Detailed list of posted videos
+    """
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     serializer_class = VideoSerializer
     queryset = Videos.objects.annotate(
