@@ -6,7 +6,7 @@ from .serializers import VideoDislikeSerializer
 
 class VideoDislikeList(generics.ListCreateAPIView):
     """
-    List of all  disliked video posts 
+    List of all  disliked video posts
     """
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     serializer_class = VideoDislikeSerializer

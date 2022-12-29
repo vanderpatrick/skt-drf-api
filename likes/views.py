@@ -6,7 +6,7 @@ from .serializers import LikeSerializer
 
 class LikeList(generics.ListCreateAPIView):
     """
-    Displays list of likes from regular posts 
+    Displays list of likes from regular posts
     """
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     serializer_class = LikeSerializer
