@@ -255,10 +255,7 @@ pip3 freeze --local > requirements.txt
 ## CREDITS:
 
 ### Content:
-- The creation of this API database was provided through the step by step guide of the C.I. DRF-API walkthrough project.
-- All classes & functions have been credited.
-- Modifications have been made to the 'Profiles' & 'Posts' app models, and an additional two apps along with models, serializers & views have been created by me.
-- Oisin from Tutor support went above & beyond to assist me in resolving an issue with my database that prevented new posts from being created. The steps we took have been documented in point #5 of the Manual Testing section.
+- DRF-API project from code institute was used as a stepping stone for the developmnet of this project.
 
 ### Media:
 - Default profile picture used from Code Institute Walk trhough project
