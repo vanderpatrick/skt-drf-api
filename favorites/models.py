@@ -4,6 +4,9 @@ from posts.models import Post
 
 
 class PostFavorites(models.Model):
+    """
+    Regular post favorite model
+    """
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     post_favorite = models.ForeignKey(
         Post, related_name='favorites', on_delete=models.CASCADE)

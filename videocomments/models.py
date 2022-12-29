@@ -1,10 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import User
 from videos.models import Videos
-# Create your models here.
 
 
 class VideoComment(models.Model):
+    """
+    Post video  comment model
+    """
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     video = models.ForeignKey(
         Videos, on_delete=models.CASCADE, related_name='videocomments')
@@ -17,4 +19,3 @@ class VideoComment(models.Model):
 
     def __str__(self):
         return self.content
-

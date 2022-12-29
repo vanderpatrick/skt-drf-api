@@ -4,6 +4,9 @@ from .models import Dislike
 
 
 class DislikeSerializer(serializers.ModelSerializer):
+    """
+    Dislike serializer
+    """
     owner = serializers.ReadOnlyField(source="owner.usernmae")
 
     class Meta:

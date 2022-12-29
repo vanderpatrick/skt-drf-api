@@ -4,6 +4,9 @@ from favorites.models import PostFavorites
 
 
 class PostFavoritesSerializer(serializers.ModelSerializer):
+    """
+    Regular post serializer
+    """
     owner = serializers.ReadOnlyField(source='owner.username')
 
     class Meta:

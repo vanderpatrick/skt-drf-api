@@ -5,6 +5,9 @@ from .serializers import DislikeSerializer
 
 
 class DislikeList(generics.ListCreateAPIView):
+    """
+    Displays list of all disliked posts
+    """
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     serializer_class = DislikeSerializer
     queryset = Dislike.objects.all()
@@ -14,6 +17,9 @@ class DislikeList(generics.ListCreateAPIView):
 
 
 class DislikeDetail(generics.RetrieveDestroyAPIView):
+    """
+    Detailed data over the relation of user -> dislike
+    """
     permission_classes = [IsOwnerOrReadOnly]
     queryset = Dislike.objects.all()
     serializer_class = DislikeSerializer

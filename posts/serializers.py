@@ -6,6 +6,9 @@ from favorites.models import PostFavorites
 
 
 class PostSerializer(serializers.ModelSerializer):
+    """
+    Regular post serializers
+    """
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
     profile_id = serializers.ReadOnlyField(source='owner.profile.id')

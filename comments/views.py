@@ -20,6 +20,9 @@ class CommentList(generics.ListCreateAPIView):
 
 
 class CommentDetail(generics.RetrieveUpdateDestroyAPIView):
+    """
+    Detailed data over the relation between user and comment
+    """
     permission_classes = [IsOwnerOrReadOnly]
     serializer_class = CommentSerializerDetail
     queryset = Comment.objects.all()

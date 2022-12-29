@@ -34,4 +34,7 @@ class CommentSerializer(serializers.ModelSerializer):
 
 
 class CommentSerializerDetail(CommentSerializer):
+    """
+    Detailed data of relation between user - comment - post
+    """
     post = serializers.ReadOnlyField(source='post.id')

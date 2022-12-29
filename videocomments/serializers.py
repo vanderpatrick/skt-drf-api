@@ -4,6 +4,9 @@ from django.contrib.humanize.templatetags.humanize import naturaltime
 
 
 class VideoCommentSerializer(serializers.ModelSerializer):
+    """
+    Post video serializer
+    """
     owner = serializers.ReadOnlyField(source="owner.username")
     is_owner = serializers.SerializerMethodField()
     profile_id = serializers.ReadOnlyField(source='owner.profile.id')
