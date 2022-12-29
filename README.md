@@ -12,59 +12,20 @@ All User Stories have been documented in their own file, the link for which can 
 I have included links to the [GitHub Issues](https://github.com/CluelessBiker/project5-red-crayon/issues) for this project, as well as the [KANBAN board](https://github.com/users/CluelessBiker/projects/2).
 
 ## Database:
-![SQL Database model](/Assets/ReadMeImages/database%20relation.png)
+![Database model](/Assets/ReadMeImages/database%20relation.png)
 
 ## Testing:
 ### Validator Testing: 
-It common knolage nowadays that PEP8 is not available anymore, i followed the terminal for syntax errors that doesent follow pep8 syntax, all errors regarding code from django were ignored
+It's common knolage nowadays that PEP8 is not available anymore, i followed the terminal for syntax errors that doesent follow pep8 syntax, all errors regarding code from django were ignored
 
 ### Manual Testing:
-1. Manually verified each url path created works & opens without error.
-2. Verified that the CRUD functionality is available in each app via the development version: Articles, Events, Comments, Followers, Likes, Posts, Profiles
- - Checked this by going to each link.
- - Creating a new item.
- - Checking new item URL path. 
- - Editing the item (not available for Likes, Followers or Users)
- - Deleting the item (Not available for Users or Profiles)
-3. Ensured search feature for Posts, Events & Articles apps returns results. Results not filtered for events:
- - Checked the views file for Events. Filter & search field functions were not indented correctly. Once amended, the search bar produced the desired results.
-4. Repeated the steps for the deployed API, and all pages except `/profiles` would load.
- - checked the code, and was unable to find an error, other than the "Server Error (500)" on the deployed link.
- - Reached out to Tutor support, and Ger was able to detect that the issue was with the database model.
- - reset the database with the following commands:
-```
-python3 manage.py migrate profiles zero
-```
- - upon completion, & migrating the database once again , all links were now viable on the Heroku deployed link.
-5. Frontend App throws a 500 error when saving the posts form.
- - Logged in to admin panel of deployed API app. The same error arises.
- - migrated the posts app back to zero, and made the migrations again. The issue persists.
- - backed up the database `python manage.py dumpdata > db.json`, & then ran the following commands:
-```
-curl https://cli-assets.heroku.com/install.sh | sh
-heroku login -i
-heroku pg:info -a project5-drf-api
-heroku pg:reset -a project5-drf-api
-```
- - deleted `0001_initial.py` files & `__pycache__` from the migration folders in all apps.
- - Ran the migration commands again:
-```
-python3 manage.py makemigrations
-python3 manage.py migrate
-```
- - created a new super user to test functionality
-```
-python3 manage.py createsuperuser
-```
- - Was now able to create a post via the deployed admin panel.
- - upon returning to the development version of the app, we were now unable to login or create a new user
- - clearing the browser cookies & cache, as well as relaunching the gitpod workspace resolved this.
-
-### Unfixed Bugs
-- None so far.
-
+1. All url patterns works without any issues
+2. CRUD functionality works whithout any issues
+3. All filter functions works whitouth any issues
+4. Creating new users, creates a new profile instance whithout any issues
+5. Possible duplicate was an recorring issue due to curroption in the database a simple reset fixed the problem 
+ 
 ## Technologies Used:
-### Main Languages Used:
 - Python
 
 ### Frameworks, Libraries & Programs Used:
@@ -76,32 +37,36 @@ python3 manage.py createsuperuser
 - Django Rest Auth
 - PostgreSQL
 - Cors Headers
-- DrawSQL: An interactive ERD platform that allows you to set up your database tables, & build the connections between them for a visual layout.
+
 
 ## Deployment:
 ### Project creation:
 1. Create the GitHub repository.
 2. Create the project app on [Heroku](heroku.com).
-3. Add the Postgres package to the Heroku app via the Resources tab.
-4. Once the GitHub repository was launched on GitPod, installed the following packages using the `pip install` command:
+3. Create a Elephant account, create a new DB instance then connect to the config vars from heroku settings
+5. Clone this repository or forked to your code editor of choosing
+* CLONE
+- In this Github repository click on the green code button
+- copy the url and use in your terminal  the command 
 ```
-'django<4'
-dj3-cloudinary-storage
-Pillow
-djangorestframework
-django-filter
-dj-rest-auth
-'dj-rest-auth[with_social]'
-djangorestframework-simplejwt
-dj_database_url psycopg2
-gunicorn
-django-cors-headers
+git clone + url
 ```
-5. Created the Django project with the following command:
+- the repo should be cloned to your machine
+* Fork
+- In this repository, TOP right corner you shall see a fork button
+- Click on it
+- click then in the create fork green button
+- Now you should have a forked repository in your repo page
+- Now choose your code editor of choice 
+
+4. To install all dependencies of this project use the command 
 ```
-django-admin startproject project_name .
+ pip install -r requirements.txt
+
 ```
-6. Navigated back to [Heroku](heroku.com), and under the Settings tab, added the following configvars:
+All dependencies should be installed 
+
+5. Navigated back to [Heroku](heroku.com), and under the Settings tab, added the following configvars:
  - Key: SECRET_KEY | Value: hidden
  - Key: CLOUDINARY_URL | Value: cloudinary://hidden
  - Key: DISABLE_COLLECTSTATIC | Value: 1
@@ -122,22 +87,39 @@ os.environ['SECRET_KEY'] = 'hidden'
 os.environ['DATABASE_URL'] = 'postgres://hidden'
 ```
 ### In settings.py: 
-<!-- For reference, refer to: [DRF-API walkthrough settings.py](https://github.com/Code-Institute-Solutions/drf-api/blob/2c0931a2b569704f96c646555b0bee2a4d883f01/drf_api/settings.py) -->
-9. Add the following to INSTALLED_APPS to support the newly installed packages:
+9. Installed apps should look like this 
 ```
-'cloudinary_storage',
-'django.contrib.staticfiles',
-'cloudinary',
-'rest_framework',
-'django_filters',
-'rest_framework.authtoken',
-'dj_rest_auth',
-'django.contrib.sites',
-'allauth',
-'allauth.account',
-'allauth.socialaccount',
-'dj_rest_auth.registration',
-'corsheaders',
+'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'cloudinary_storage',
+    'django.contrib.staticfiles',
+    'cloudinary',
+    'rest_framework',
+    'django_filters',
+    'rest_framework.authtoken',
+    'dj_rest_auth',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'dj_rest_auth.registration',
+    'corsheaders',
+
+    'profiles',
+    'followers',
+    'dislike',
+    'posts',
+    'videos',
+    'likes',
+    'comments',
+    'videolike',
+    'videodislike',
+    'favorites',
+    'videofavorites',
+    'videocomments'
 ```
 10. Import the database, the regular expression module & the env.py
 ```
@@ -279,5 +261,4 @@ pip3 freeze --local > requirements.txt
 - Oisin from Tutor support went above & beyond to assist me in resolving an issue with my database that prevented new posts from being created. The steps we took have been documented in point #5 of the Manual Testing section.
 
 ### Media:
-- Default post image Photo by Artem Podrez from [Pexels](https://www.pexels.com/photo/image-of-a-whale-made-of-scrap-materials-7048043/)
-- Default profile image from [Favicon](https://favicon.io/emoji-favicons/alien-monster)
+- Default profile picture used from Code Institute Walk trhough project
