@@ -7,9 +7,9 @@ Skate Universe is a social media apllication where users can interect with the s
 
 
 ## User Stories:
-All User Stories have been documented in their own file, the link for which can be found [HERE](static/userstories.md).
+For user storys Github kanbam board was used 
 
-I have included links to the [GitHub Issues](https://github.com/CluelessBiker/project5-red-crayon/issues) for this project, as well as the [KANBAN board](https://github.com/users/CluelessBiker/projects/2).
+Kamban board for SKT DRF [KANBAN board](https://github.com/users/vanderpatrick/projects/12).
 
 ## Database:
 ![Database model](/Assets/ReadMeImages/database%20relation.png)
