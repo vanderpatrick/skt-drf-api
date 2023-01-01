@@ -256,6 +256,7 @@ pip3 freeze --local > requirements.txt
 
 ### Content:
 - DRF-API project from code institute was used as a stepping stone for the developmnet of this project.
+- Clueles biker for the readme template
 
 ### Media:
 - Default profile picture used from Code Institute Walk trhough project
