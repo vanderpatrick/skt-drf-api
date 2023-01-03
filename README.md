@@ -23,7 +23,7 @@ It's common knolage nowadays that PEP8 is not available anymore, i followed the 
 2. CRUD functionality works whithout any issues
 3. All filter functions works whitouth any issues
 4. Creating new users, creates a new profile instance whithout any issues
-5. Possible duplicate was an recorring issue due to curroption in the database a simple reset fixed the problem 
+5. Possible duplicate was an recorring issue due to corruption in the database a simple reset fixed the problem 
  
 ## Technologies Used:
 - Python
